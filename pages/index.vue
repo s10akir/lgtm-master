@@ -1,5 +1,7 @@
 <template>
-  <Tutorial/>
+  <div class="container text-center">
+    <h1>THE lGTM M@STER</h1>
+  </div>
 </template>
 
 <script lang="ts">
