@@ -15,4 +15,14 @@ model Category {
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Image     Image[]
+}
+
+model Image {
+  id          Int      @id @default(autoincrement())
+  url         String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }
