@@ -10,11 +10,14 @@
       width="1000"
       alt="lgtm image"
     />
-    <div>
-      <b-btn @click="fetchImageUrl(1)" variant="outline-success">Approve</b-btn>
-      <b-btn @click="fetchImageUrl(2)" variant="outline-danger">Request Changes</b-btn>
-      <b-btn @click="fetchImageUrl(3)" variant="outline-info">Comment</b-btn>
+    <div class="my-2">
+      <b-btn variant="outline-success" @click="fetchImageUrl(1)">Approve</b-btn>
+      <b-btn variant="outline-danger" @click="fetchImageUrl(2)"
+        >Request Changes</b-btn
+      >
+      <b-btn variant="outline-info" @click="fetchImageUrl(3)">Comment</b-btn>
     </div>
+    <nuxt-link to="/images">Show All Images</nuxt-link>
   </div>
 </template>
 

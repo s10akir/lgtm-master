@@ -5,6 +5,11 @@ const prisma = new PrismaClient()
 
 const router = Router()
 
+router.get('/', async (_, res) => {
+  const images = await prisma.image.findMany({ include: { category: true } })
+  res.json(images)
+})
+
 router.get('/random', async (req, res) => {
   const requestCategoryId = Number(req.query.categoryId)
 
