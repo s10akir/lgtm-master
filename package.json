@@ -12,7 +12,9 @@
     "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:style",
     "test": "jest",
-    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\""
+    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed --preview-feature"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
