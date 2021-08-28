@@ -10,7 +10,7 @@
       width="1000"
       alt="lgtm image"
     />
-    <div class="my-2">
+    <div class="my-2 image-switcher">
       <b-btn variant="outline-success" @click="fetchImageUrl(1)">Approve</b-btn>
       <b-btn variant="outline-danger" @click="fetchImageUrl(2)"
         >Request Changes</b-btn
@@ -46,3 +46,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.image-switcher {
+  .btn {
+    width: 190px;
+  }
+}
+</style>
