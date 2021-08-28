@@ -27,7 +27,14 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      images: [],
+      images: [
+        {
+          url: '',
+          category: {
+            id: null
+          }
+        }
+      ],
     }
   },
   mounted() {
@@ -35,7 +42,7 @@ export default Vue.extend({
   },
   methods: {
     async fetchImageUrls() {
-      const url = 'api/images'
+      const url = '/api/images'
 
       const res = await this.$axios.get(url)
       this.images = res.data
