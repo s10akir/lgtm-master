@@ -18,6 +18,11 @@
         alt="upload preview"
         width="1000"
       />
+      <b-row>
+        <b-form-group label="select image category">
+          <b-form-radio-group v-model="selected" :options="options" />
+        </b-form-group>
+      </b-row>
       <b-alert show variant="danger" class="my-4">
         <p class="my-2">
           画像はImgurに匿名Uploadされます。<wbr />一度Uploadすると本当の意味での削除は容易ではありません。
@@ -28,7 +33,7 @@
           </b-form-checkbox>
         </div>
       </b-alert>
-      <b-btn variant="success" :disabled="!accept" @click="uploadFile"
+      <b-btn variant="success" :disabled="!accept || !selected" @click="uploadFile"
         >Submit</b-btn
       >
     </div>
@@ -42,6 +47,12 @@ export default Vue.extend({
     return {
       file: null,
       fileUrl: '',
+      selected: null,
+      options: [
+        {text: 'Approve', value: 1},
+        {text: 'Reuqest changes', value: 2},
+        {text: 'Comment', value: 3},
+      ],
       accept: false,
     }
   },
@@ -63,11 +74,14 @@ export default Vue.extend({
 
       await this.$axios.post('/api/images', {
         image: this.fileUrl,
+        categoryId: this.selected,
       })
       // TODO: アップロード後の画像表示
 
       this.file = null
-      this.fileUrl = null
+      this.fileUrl = ''
+      this.selected = null
+      this.accept = false
       this.returnTop()
     },
     returnTop() {
