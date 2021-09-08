@@ -1,9 +1,12 @@
 import { PrismaClient } from "@prisma/client";
+import express from "express";
 import { Router } from "express";
+import axios from 'axios'
 
 const prisma = new PrismaClient()
-
 const router = Router()
+
+router.use(express.json({limit: '10mb'}))
 
 router.get('/', async (_, res) => {
   const images = await prisma.image.findMany({ include: { category: true } })
@@ -28,6 +31,15 @@ router.get('/random', async (req, res) => {
   const image = images[Math.floor(Math.random() * images.length)]
 
   res.json(image)
+})
+
+router.post('/', async (req, res) => {
+  const newImage = req.body.image
+  const categoryId = Number(req.body.categoryId)
+
+  // TODO: upload to imgur
+
+  res.json({})
 })
 
 export default router
