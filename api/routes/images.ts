@@ -51,11 +51,13 @@ router.post('/', (req, res) => {
     .post('https://api.imgur.com/3/image', data, options)
     .then((imgurRes) => {
       const url = imgurRes.data.data.link
+      const deleteHash = imgurRes.data.data.deletehash
 
       prisma.image
         .create({
           data: {
             url,
+            deleteHash,
             category: {
               connect: {
                 id: categoryId,
