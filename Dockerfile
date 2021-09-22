@@ -32,7 +32,8 @@ COPY yarn.lock .
 RUN yarn install
 
 COPY . .
-COPY --from=builder /usr/local/app/dist .
+COPY --from=builder /usr/local/app/dist /usr/local/app/dist
+COPY --from=builder /usr/local/app/.nuxt /usr/local/app/.nuxt
 RUN yarn prisma generate
 
 # temporary database
