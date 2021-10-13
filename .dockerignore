@@ -1,0 +1,9 @@
+.git/
+.github/
+.husky/
+dist/
+node_modules/
+.env
+.editorconfig
+commitlint.config.js
+Dockerfile

@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  app:
+    image: node:14
+    working_dir: /usr/local/app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/local/app
+      - node_modules:/usr/local/app/node_modules
+    command: yarn dev
+
+volumes:
+  node_modules:
