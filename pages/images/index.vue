@@ -7,14 +7,20 @@
       </h2>
     </div>
     <div>
-      <b-row class="text-right">
-        <b-col v-for="image in images" :key="image.id">
+      <b-row class="text-center">
+        <b-col v-for="image in images" :key="image.id" class="image-grid">
           <b-badge
             :variant="categoryVariant(image.category.id)"
-            class="shadow"
+            class="shadow image-label"
             >{{ image.category.name }}</b-badge
           >
-          <b-img rounded center fluid :src="image.url" class="shadow" />
+          <b-img
+            rounded
+            center
+            fluid
+            :src="image.url"
+            class="image-view shadow"
+          />
         </b-col>
       </b-row>
     </div>
@@ -31,9 +37,9 @@ export default Vue.extend({
         {
           url: '',
           category: {
-            id: null
-          }
-        }
+            id: null,
+          },
+        },
       ],
     }
   },
@@ -62,3 +68,19 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.image-grid {
+  max-width: 10.5em;
+  margin-bottom: 3em;
+
+  .image-label {
+    width: 10.5em;
+  }
+
+  .image-view {
+    display: inline-block;
+    max-height: 5em;
+  }
+}
+</style>
