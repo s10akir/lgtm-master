@@ -4,6 +4,10 @@ services:
   app:
     image: node:14
     working_dir: /usr/local/app
+    environment:
+      DATABASE_URL: mysql://root:root@db/lgtm-master
+      HOST: 0.0.0.0
+      IMGUR_CLIENT_ID: ''
     ports:
       - 3000:3000
     volumes:
@@ -11,5 +15,14 @@ services:
       - node_modules:/usr/local/app/node_modules
     command: yarn dev
 
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: lgtm-master
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+
 volumes:
   node_modules:
+  db_data:
