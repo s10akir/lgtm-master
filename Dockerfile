@@ -34,11 +34,5 @@ RUN yarn install
 COPY . .
 COPY --from=builder /usr/local/app/dist /usr/local/app/dist
 COPY --from=builder /usr/local/app/.nuxt /usr/local/app/.nuxt
-RUN yarn prisma generate
-
-# temporary database
-ENV DATABASE_URL="file:production.db"
-RUN yarn db:migrate
-RUN yarn db:seed
 
 CMD ["yarn", "start"]
