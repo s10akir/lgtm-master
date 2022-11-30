@@ -31,7 +31,7 @@
     "core-js": "^3.18.3",
     "express": "^4.17.1",
     "nuxt": "^2.15.7",
-    "prisma": "2.30.0"
+    "prisma": "4.7.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",
