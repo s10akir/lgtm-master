@@ -1,0 +1,35 @@
+services:
+  web:
+    image: ruby:3.2.2
+    command: 'env RUBY_DEBUG_OPEN=true bin/rails server --binding 0.0.0.0'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+      - bundler:/usr/local/bundle
+    working_dir: /usr/src/app
+
+  js-build:
+    image: node:20.9.0
+    command: 'yarn build --watch'
+    stdin_open: true
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - yarn_cache:/usr/local/share/.cache/yarn/v6
+
+  css-build:
+    image: node:20.9.0
+    command: 'yarn build:css --watch'
+    stdin_open: true
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - yarn_cache:/usr/local/share/.cache/yarn/v6
+
+volumes:
+  bundler:
+  node_modules:
+  yarn_cache:
